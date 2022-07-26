@@ -1,6 +1,12 @@
 body {
     display: flex;
-    justify-content: center;
+    background-color: #fffedd;
+    flex-direction: column;
+    align-items: center;
+}
+
+.h1 {
+    font-family: blippo, fantasy;
 }
 
 .outline {
@@ -9,51 +15,82 @@ body {
     align-items: center;
     height: 550px;
     width: 350px;
+    border-radius: 1em;
     background-color: #73bda8;
 }
 
 .container {
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     height: 500px;
     width: 300px;
+    border-radius: 1em;
     background-color: #ecebc2;
+}
+
+.display {
+    background-color: #929275;
+    height: 150px;
+    width: 285px;
+    border-radius: 1em;
+    margin: auto;
+}
+
+.bottom-calc {
+    display: flex;
 }
 
 .erase {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     gap: 5px;
     padding: 10px;
 }
 
 .erase-button {
-    padding: 10px 15px;
+    cursor: pointer;
+    padding: 5px 40px;
     border-radius: 0.5em;
-    font-size: 15px;
+    font-size: 20px;
+    background-color: #cc6b49;
+    color: #fff;
 }
 
 
 .numbers {
     display: flex;
     flex-wrap: wrap;
+    flex: 2;
     gap: 20px;
-    justify-content: center;
+    align-content: center;
+    justify-content: flex-end;
+    padding-bottom: 8px;
 }
 
 .number-button {
+    cursor: pointer;
     padding: 10px 15px;
     border-radius: 0.5em;
     font-size: 25px;
+    background-color: #5f4735;
+    color: #fff;
 }
 
 .operators {
     display: flex;
+    flex:1;
     flex-direction: column;
-    gap: 5px;
+    padding-bottom: 5px;
 }
 
 .operator-button {
-    padding: 10px 15px;
-    border-radius: 0.5em;
-    font-size: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 30px;
+    height: 50px;
+    width: 50px;
+    margin: auto;
+    background-color: #D2a24c;
+    color: #fff;
 }
