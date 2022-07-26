@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.outline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+    width: 350px;
+    background-color: #73bda8;
+}
+
+.container {
+    align-items: center;
+    height: 500px;
+    width: 300px;
+    background-color: #ecebc2;
+}
+
+.erase {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
+}
+
+.erase-button {
+    padding: 10px 15px;
+    border-radius: 0.5em;
+    font-size: 15px;
+}
+
+
+.numbers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.number-button {
+    padding: 10px 15px;
+    border-radius: 0.5em;
+    font-size: 25px;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.operator-button {
+    padding: 10px 15px;
+    border-radius: 0.5em;
+    font-size: 15px;
+}
