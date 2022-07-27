@@ -6,24 +6,28 @@ body {
 }
 
 .h1 {
-    font-family: blippo, fantasy;
+    font-family: "Molle";
+    font-size: 24px;
+    color: #5f4735;
+    text-shadow:  2px 2px #cc6b49, 4px 4px 8px #3b3333;
 }
 
 .outline {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 550px;
+    height: 500px;
     width: 350px;
     border-radius: 1em;
     background-color: #73bda8;
+    box-shadow: 4px 4px 8px #3b3333;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 500px;
+    height: 450px;
     width: 300px;
     border-radius: 1em;
     background-color: #ecebc2;
@@ -31,10 +35,11 @@ body {
 
 .display {
     background-color: #929275;
-    height: 150px;
+    height: 100px;
     width: 285px;
     border-radius: 1em;
     margin: auto;
+    box-shadow: -1px -1px 0px #3b3333;
 }
 
 .bottom-calc {
@@ -62,17 +67,18 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex: 2;
-    gap: 20px;
-    align-content: center;
+    gap: 10px;
+    align-content: space-around;
     justify-content: flex-end;
     padding-bottom: 8px;
 }
 
 .number-button {
     cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 0.5em;
-    font-size: 25px;
+    border-radius: 50%;
+    font-size: 30px;
+    height: 50px;
+    width: 50px;
     background-color: #5f4735;
     color: #fff;
 }
@@ -82,6 +88,7 @@ body {
     flex:1;
     flex-direction: column;
     padding-bottom: 5px;
+    gap: 2px;
 }
 
 .operator-button {
