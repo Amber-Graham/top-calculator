@@ -20,11 +20,78 @@
 // add a backspace button if the user needs rewrite the function (make a clear everything and clear button?)
 // add keyboard support (yikes)
 
-// first things first:
-    // make HTML:
-        // buttons and display
-        // container for buttons
-        // container for display
-        // 
-    // style them
-    //
+const calculator = {
+    displayValue: '0',
+    firstOperand: null,
+    waitingForSecondOperand: false,
+    operator: null,
+};
+
+function updateDisplay() {
+    const display = document.querySelector('.calc-input');
+    display.value = calculator.displayValue;
+}
+
+updateDisplay();
+
+const keys = document.querySelector('.bottom-calc');
+keys.addEventListener('click', (event) => {
+    const { target } = event;
+    if(!target.matches('button')) {
+    return;
+    }
+
+    if(target.classList.contains('operator-button')) {
+        handleOperator(target.value);
+        updateDisplay();
+    }
+
+    if(target.classList.contains('clear')) {
+        console.log('clear', target.value);
+        return;
+    }
+
+    if(target.classList.contains('backspace')) {
+        console.log('backspace', target.value);
+        return;
+    }
+
+    inputDigit(target.value);
+    updateDisplay();
+});
+
+function inputDigit(digit) {
+    const { displayValue } = calculator;
+    calculator.displayValue = displayValue === '0' ? digit:displayValue + digit;
+    console.log(calculator);
+}
+
+function handleOperator(nextOperator) {
+    const { firstOperand, displayValue, operator } = calculator;
+    const inputValue = parseFloat(displayValue);
+
+    if(firstOperand === null && !isNaN(inputValue)) {
+        calculator.firstOperand = inputValue;
+    }
+
+    calculator.waitingForSecondOperand = true;
+    calculator.operator = nextOperator;
+    console.log(calculator);
+}
+
+// user input will be stored in this function and used later 
+    // depending on the operator selected
+// all inputs will be event listeners
+// store numbers function
+
+    // addition = function()
+
+    // subtraction = function()
+
+    // multiply = function()
+
+    // divide = function()
+
+// clear = function()
+
+// backspace = function()
