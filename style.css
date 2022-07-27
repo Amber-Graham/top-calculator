@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou:regular");
+
 body {
     display: flex;
     background-color: #fffedd;
@@ -40,6 +42,18 @@ body {
     border-radius: 1em;
     margin: auto;
     box-shadow: -1px -1px 0px #3b3333;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.calc-input {
+    text-align: right;
+    border: none;
+    background: none;
+    font-size: 48px;
+    color:#3b3b2b;
+    font-family: "ZCOOL QingKe HuangYou";
 }
 
 .bottom-calc {
@@ -53,9 +67,9 @@ body {
     padding: 10px;
 }
 
-.erase-button {
+.clear, .backspace {
     cursor: pointer;
-    padding: 5px 40px;
+    padding: 5px 30px;
     border-radius: 0.5em;
     font-size: 20px;
     background-color: #cc6b49;
@@ -65,15 +79,14 @@ body {
 
 .numbers {
     display: flex;
-    flex-wrap: wrap;
-    flex: 2;
-    gap: 10px;
+    gap: 20px;
     align-content: space-around;
-    justify-content: flex-end;
+    justify-content: center;
     padding-bottom: 8px;
+    flex-wrap: wrap;
 }
 
-.number-button {
+.number-button, .float, .decimal, .operator-button {
     cursor: pointer;
     border-radius: 50%;
     font-size: 30px;
@@ -85,19 +98,25 @@ body {
 
 .operators {
     display: flex;
-    flex:1;
     flex-direction: column;
-    padding-bottom: 5px;
-    gap: 2px;
+    padding: 5px;
+    gap: 10px;
+    justify-content: space-evenly;
 }
 
 .operator-button {
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 30px;
-    height: 50px;
-    width: 50px;
-    margin: auto;
     background-color: #D2a24c;
+    color: #fff;
+}
+
+.emoji {
+    text-align: center;
+    text-shadow: 1px 1px #3b3333;
+    font-size: 35px;
+    border-radius: 50%;
+    border: 2px solid #5f4735;
+    height: 48px;
+    width: 48px;
+    background-color:#D2a24c;
     color: #fff;
 }
