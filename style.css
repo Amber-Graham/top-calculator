@@ -5,6 +5,7 @@ body {
     background-color: #fffedd;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
 
 .h1 {
@@ -119,4 +120,12 @@ body {
     width: 48px;
     background-color:#D2a24c;
     color: #fff;
+}
+
+.footer {
+    font-family: "ZCOOL QingKe HuangYou";
+    font-size: 18px;
+    margin-top: auto;
+    color:#5f4735;
+    text-shadow: 4px 4px 8px #cc6b49;
 }
