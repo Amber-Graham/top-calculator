@@ -1,9 +1,3 @@
-// The calculator will contain functions for all of the basic math operators
-// including: add, subtract, multiply, divide
-    // I believe i will need to tie the function to each button, similar to what i did in the etch a sketch lesson
-// create an operator function that takes an operator and 2 numbers and then calls one of the above functions on the numbers
-// create a basic HTML calculator with buttons for each digit, each basic math operator, an equals key, and a clear 
-    // focus on this before doing the JS
 // create a display for the calculator with some dummy numbers in there
 // the results of the function should display in the calculator display
 // to make the calculator work, we must store the first number(input), the operator, and whatever numbers come back after that before they push equals
@@ -27,6 +21,82 @@ const calculator = {
     operator: null,
 };
 
+function inputDigit(digit) {
+    const { displayValue, waitingForSecondOperand } = calculator;
+
+    if (waitingForSecondOperand === true) {
+        calculator.displayValue = digit;
+        calculator.waitingForSecondOperand = false;
+    } else {
+    calculator.displayValue = displayValue === '0' ? digit:displayValue + digit;
+    }
+    
+    console.log(calculator);
+}
+
+function inputDecimal(dot) {
+    if(calculator.waitingForSecondOperand === true) {
+        calculator.displayValue = '0.';
+        calculator.waitingForSecondOperand = false;
+        return;
+    }
+
+    if(!calculator.displayValue.includes(dot)) {
+        calculator.displayValue += dot;
+    }
+}
+
+function handleOperator(nextOperator) {
+    const { firstOperand, displayValue, operator } = calculator;
+    const inputValue = parseFloat(displayValue);
+
+    if(operator && calculator.waitingForSecondOperand) {
+        calculator.operator = nextOperator;
+        console.log(calculator);
+        return;
+    }
+
+    if(firstOperand === null && !isNaN(inputValue)) {
+        calculator.firstOperand = inputValue;
+    } else if (operator) {
+        const result = calculate(firstOperand, inputValue, operator);
+
+        calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+        calculator.firstOperand = result;
+    }
+
+    calculator.waitingForSecondOperand = true;
+    calculator.operator = nextOperator;
+    console.log(calculator);
+}
+
+function calculate(firstOperand, secondOperand, operator) {
+    if (operator === '+') {
+        return firstOperand + secondOperand;
+    } else if (operator === '-') {
+        return firstOperand - secondOperand;
+    } else if (operator === '*') {
+        return firstOperand * secondOperand;
+    } else if (operator === '/') {
+        return firstOperand / secondOperand;
+    }
+
+    return secondOperand;
+}
+
+function resetCalculator() {
+    calculator.displayValue = '0';
+    calculator.firstOperand = null;
+    calculator.waitingForSecondOperand = false; 
+    calculator.operator = null;
+    console.log(calculator);
+}
+
+function backspaceCalculator() {
+    calculator.displayValue = '';
+    console.log(calculator);
+}
+
 function updateDisplay() {
     const display = document.querySelector('.calc-input');
     display.value = calculator.displayValue;
@@ -37,61 +107,33 @@ updateDisplay();
 const keys = document.querySelector('.bottom-calc');
 keys.addEventListener('click', (event) => {
     const { target } = event;
+    const { value } = target;
     if(!target.matches('button')) {
     return;
     }
 
-    if(target.classList.contains('operator-button')) {
-        handleOperator(target.value);
-        updateDisplay();
+    switch(value) {
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '=':
+            handleOperator(value);
+            break;
+        case '.':
+            inputDecimal(value);
+            break;
+        case 'del':
+            backspaceCalculator(value);
+            break;
+        case 'CE':
+            resetCalculator();
+            break;
+        default:
+            if(Number.isInteger(parseFloat(value))) {
+                inputDigit(value);
+            }
     }
 
-    if(target.classList.contains('clear')) {
-        console.log('clear', target.value);
-        return;
-    }
-
-    if(target.classList.contains('backspace')) {
-        console.log('backspace', target.value);
-        return;
-    }
-
-    inputDigit(target.value);
     updateDisplay();
 });
-
-function inputDigit(digit) {
-    const { displayValue } = calculator;
-    calculator.displayValue = displayValue === '0' ? digit:displayValue + digit;
-    console.log(calculator);
-}
-
-function handleOperator(nextOperator) {
-    const { firstOperand, displayValue, operator } = calculator;
-    const inputValue = parseFloat(displayValue);
-
-    if(firstOperand === null && !isNaN(inputValue)) {
-        calculator.firstOperand = inputValue;
-    }
-
-    calculator.waitingForSecondOperand = true;
-    calculator.operator = nextOperator;
-    console.log(calculator);
-}
-
-// user input will be stored in this function and used later 
-    // depending on the operator selected
-// all inputs will be event listeners
-// store numbers function
-
-    // addition = function()
-
-    // subtraction = function()
-
-    // multiply = function()
-
-    // divide = function()
-
-// clear = function()
-
-// backspace = function()
